@@ -1,0 +1,54 @@
+﻿@model List<EComMVC.Models.BO.Produit>
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-12 d-flex align-items-center">
+            <h1 class="Display-4" style="margin-right: 900px;">Liste des produits</h1>
+        </div>
+    </div>
+</div>
+
+
+
+<br />
+
+<form method="get" class="form-inline">
+    <div class="form-group">
+        <label for="filter-name" class="sr-only">Chercher un produit:</label>
+        <div class="input-group">
+            <input class="form-control" type="text" id="filter-name" name="filterName" placeholder="Chercher un produit">
+            <div class="input-group-append">
+                <button class="btn btn-secondary" type="submit">
+                    <i class="fa fa-search"></i> Filtrer
+                </button>
+            </div>
+        </div>
+    </div>
+</form>
+<a class="nav-link text-dark" asp-area="" asp-controller="Product" asp-action="Add">Ajouter Produit</a>
+<br />
+<br />
+
+<div class="row">
+
+    @foreach (var produit in Model)
+    {
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <img src="@produit.Image" class="card-img-top" alt="Image du produit">
+                <div class="card-body">
+                    <h5 class="card-title">@produit.Name</h5>
+                    <p class="card-text">@produit.Description</p>
+                    <p class="card-text"><strong>Prix : @produit.Price</strong></p>
+                    <a href="updateForm/@produit.Id">Modifier le produit</a>
+
+
+
+                </div>
+            </div>
+        </div>
+    }
+
+</div>
